@@ -3,4 +3,4 @@ yrgo-js
 
 Facit för Javascript-uppgifter
 
-Majoriteten av lösningarna består i huvudsak av den aktiva koden för uppgiften men kommer uppdateras med tiden för att vara kompletta exempel.
+Lösningarna består i huvudsak av kompletta exempel-filer men i vissa är bara den aktiva/relevanta koden med.
