@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+<title>Javascript Timer</title>
+</head>
+<body>
+ 
+<div id="frame">
+  <div id="counter"></div>
+  <input type="button" id="startButton" value="Start" />
+  <input type="button" id="stopButton" value="Stopp" />
+</div>
+
+
+<script type="text/javascript">
+
+var startButton = document.getElementById('startButton');
+var stopButton = document.getElementById('stopButton');
+
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
+
+var startOffset;
+var intervalTimer;
+
+// Skapa variabel för att spåra om timern är av eller på
+// Görs utanför alla funktionerna för att bli en global variabel
+var timerIsRunning = false;
+
+function updateCounter() {
+    var div = document.getElementById('counter');
+    var d = new Date();
+
+    // Räkna ut totala antalet sekundrar sen start, precis som tidigare
+    var total_seconds = (d.getTime() - startOffset)/1000;
+
+    // Skapa en ny variabel minutes för antalet hela minutrar
+    var minutes = Math.floor( total_seconds / 60 );
+    // Skapa en ny variabel seconds för antalet överskjutande sekundrar 
+    var seconds = Math.round( total_seconds % 60 );
+
+    // Sätt innehållet i div till att visa minut och sekunder
+    div.innerHTML = minutes + 'm ' + seconds + 's';
+}
+
+function startTimer() {
+    var d = new Date();
+    startOffset = d.getTime();
+    intervalTimer = setInterval(updateCounter, 1000);
+
+    // Visa noll i div'en #counter vid start, samma format som updateCounter
+    var div = document.getElementById('counter');
+    div.innerHTML = '0m 0s';
+
+    // Reflektera att vi startat timern i timerIsRunning
+    timerIsRunning = true;
+
+    // Aktivera stopp och gör start disabled
+    startButton.disabled = true;
+    stopButton.disabled = false;
+}
+
+function stopTimer() {
+    clearInterval(intervalTimer);
+
+    // Reflektera att vi stoppat timern i timerIsRunning
+    timerIsRunning = false;
+
+    // Aktivera start och gör stopp disabled
+    startButton.disabled = false;
+    stopButton.disabled = true;
+}
+
+</script>
+
+</body>
+</html>

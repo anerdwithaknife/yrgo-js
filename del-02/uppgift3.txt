@@ -1,0 +1,7 @@
+<div id="datum"></div>
+
+<script>
+var elm = document.getElementById('datum');
+var d = new Date();
+elm.innerHTML = d;
+</script>

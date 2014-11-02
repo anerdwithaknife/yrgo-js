@@ -1,0 +1,7 @@
+var dt = new Date();
+var elm = document.getElementById('id');
+
+if (dt.getMinutes()%2 == 0)
+    elm.style.backgroundColor = '#CC0000';
+else
+    elm.style.backgroundColor = '#00CC00';

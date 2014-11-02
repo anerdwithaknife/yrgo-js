@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+<title>Javascript Timer</title>
+</head>
+<body>
+ 
+<div id="frame">
+  <div id="counter"></div>
+  <input type="button" onclick="startTimer()" value="Start" />
+  <input type="button" onclick="stopTimer()" value="Stopp" />
+</div>
+
+
+<script type="text/javascript">
+
+var startOffset;
+var intervalTimer;
+
+function updateCounter() {
+    var div = document.getElementById('counter');
+    var d = new Date();
+    var seconds = (d.getTime() - startOffset)/1000;
+    div.innerHTML = Math.round(seconds);
+}
+
+function startTimer() {
+    var d = new Date();
+    startOffset = d.getTime();
+    intervalTimer = setInterval(updateCounter, 1000);
+
+    // Visa en nolla i div'en #counter vid start
+    var div = document.getElementById('counter');
+    div.innerHTML = '0';
+}
+
+function stopTimer() {
+    clearInterval(intervalTimer);
+}
+
+
+</script>
+
+</body>
+</html>

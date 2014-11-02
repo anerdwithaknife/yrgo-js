@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+<title>Javascript Timer</title>
+</head>
+<body>
+ 
+<div id="frame">
+  <div id="counter"></div>
+  <input type="button" id="startButton" value="Start" />
+  <input type="button" id="stopButton" value="Stopp" />
+</div>
+
+
+<script type="text/javascript">
+
+var startButton = document.getElementById('startButton');
+var stopButton = document.getElementById('stopButton');
+
+startButton.addEventListener('click', startTimer);
+stopButton.addEventListener('click', stopTimer);
+
+var currentSeconds;
+var intervalTimer;
+
+// Skapa variabel för att spåra om timern är av eller på
+// Görs utanför alla funktionerna för att bli en global variabel
+var timerIsRunning = false;
+
+// Sekundräkningen ligger nu i egen funktion
+// OBS! Uppdatera setInterval() så att den anropar updateTick(), inte updateCounter()
+function updateTick() {
+    currentSeconds += 1;
+    updateCounter();
+}
+
+// Nu ansvarar updateCounter endast för att uppdatera räknaren i div'en
+// Vi kan alltså anropa updateCounter ett obegränsat antal gånger utan att 
+// det påverkar antalet sekunder som timern räknar.
+function updateCounter() {
+    var div = document.getElementById('counter');
+
+    // Skapa en ny variabel minutes för antalet hela minutrar
+    var minutes = Math.floor( currentSeconds / 60 );
+    // Skapa en ny variabel seconds för antalet överskjutande sekundrar 
+    var seconds = Math.round( currentSeconds % 60 );
+
+    // Sätt innehållet i div till att visa minut och sekunder
+    div.innerHTML = minutes + 'm ' + seconds + 's';
+}
+
+function startTimer() {
+    // Sätter currentSeconds till 0, ersätter gamla startOffset
+    currentSeconds = 0;
+
+    intervalTimer = setInterval(updateTick, 1000);
+
+    // Kör updateCounter() en gång med currentSeconds = 0 istället för att göra .innerHTML manuellt 
+    updateCounter();
+
+    // Reflektera att vi startat timern i timerIsRunning
+    timerIsRunning = true;
+
+    // Aktivera stopp och gör start disabled
+    startButton.disabled = true;
+    stopButton.disabled = false;
+}
+
+function stopTimer() {
+    clearInterval(intervalTimer);
+
+    // Reflektera att vi stoppat timern i timerIsRunning
+    timerIsRunning = false;
+
+    // Aktivera start och gör stopp disabled
+    startButton.disabled = false;
+    stopButton.disabled = true;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+<title>Javascript</title>
+</head>
+<body>
+ 
+Förnamn: <input type="text" id="firstName" value="" /><br />
+Efternamn: <input type="text" id="Surname" value="" /><br />
+<input type="button" id="showText" value="Visa" />
+
+<div id="content"></div>
+
+<script type="text/javascript">
+
+var btn = document.getElementById('showText');
+btn.addEventListener('click', showText);
+
+function showText() {
+    var content = document.getElementById('content');
+    var firstName = document.getElementById('firstName');
+    var surname = document.getElementById('Surname');
+
+    content.innerHTML = 'Hej ' + firstName.value + ' ' + surname.value + '!';
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+<style>
+.red { color: #CC0000; }
+</style>
+
+var dt = new Date();
+var elm = document.getElementById('id');
+
+if (dt.getMinutes()%2 == 0)
+    elm.className = 'red';
+else
+    elm.className = '';

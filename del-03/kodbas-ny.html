@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+<title>Javascript Timer</title>
+</head>
+<body>
+ 
+<div id="frame">
+  <div id="counter"></div>
+  <input type="button" onclick="startTimer()" value="Start" />
+  <input type="button" onclick="stopTimer()" value="Stopp" />
+</div>
+
+
+<script type="text/javascript">
+
+var currentSeconds = 0;
+var intervalTimer;
+
+function updateCounter() {
+    currentSeconds += 1;
+    var div = document.getElementById('counter');
+    div.innerHTML = currentSeconds;
+}
+
+function startTimer() {
+    intervalTimer = setInterval(updateCounter, 1000);
+}
+
+function stopTimer() {
+    clearInterval(intervalTimer);
+}
+
+
+</script>
+
+</body>
+</html>

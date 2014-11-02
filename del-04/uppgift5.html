@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+<title>Javascript Color</title>
+</head>
+<body>
+ 
+<select id="color-list">
+<option value="">Välj en färg</option>
+
+<option>#B21F35</option>
+<option>#D82735</option>
+<option>#FF7435</option>
+<option>#FFA135</option>
+<option>#FFCB35</option>
+<option>#FFF735</option>
+
+<option>#00753A</option>
+<option>#009E47</option>
+<option>#16DD36</option>
+
+<option>#0052A5</option>
+<option>#0079E7</option>
+<option>#06A9FC</option>
+
+<option>#681E7E</option>
+<option>#7D3CB5</option>
+<option>#BD7AF6</option>
+</select>
+
+<script type="text/javascript">
+var colorList = document.getElementById('color-list');
+colorList.addEventListener('change', updateColor);
+
+function updateColor() {
+    document.body.style.backgroundColor = colorList.value;
+}
+
+
+
+/**
+ * Extra, ej i uppgiften: Kod för att färgsätta select-listan.
+ * Fungerar inte i webkit-browsers (Safari, Chrome) because reasons.
+ */
+// i börjar på 1 för att hoppa över "Välj färg" 
+for (var i=1; i<colorList.children.length; i++) {
+    // Lägger den i egen variabel för att få en genväg
+    var option = colorList.children[i];
+
+    // Sätter style="background-color: ______" med respektive value
+    option.style.backgroundColor = option.value;
+}
+
+</script>
+
+</body>
+</html>

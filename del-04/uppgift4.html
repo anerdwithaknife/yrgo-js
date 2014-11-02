@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="x-ua-compatible" content="ie=edge, chrome=1" />
+<title>Javascript</title>
+</head>
+<body>
+ 
+Förnamn: <input type="text" id="firstName" value="" /><br />
+Efternamn: <input type="text" id="Surname" value="" /><br />
+Årtal: <input type="text" id="year" value="" /><br />
+<input type="button" id="verifyAge" value="Kontrollera" />
+
+<div id="content"></div>
+
+<script type="text/javascript">
+
+var btn = document.getElementById('verifyAge');
+btn.addEventListener('click', checkAge);
+
+function checkAge() {
+    var year = document.getElementById('year');
+    var content = document.getElementById('content');
+    var firstName = document.getElementById('firstName');
+    var surname = document.getElementById('Surname');
+
+    var date = new Date();
+    if (date.getFullYear() - year.value < 18) {
+        content.innerHTML = 'Hej ' + firstName.value + ' ' + surname.value + ', du är för ung.';
+    } else {
+        window.location.href = 'http://www.adultswim.com/videos/metalocalypse/';
+    }
+
+}
+
+</script>
+
+</body>
+</html>
