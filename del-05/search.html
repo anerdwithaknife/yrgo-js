@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style type="text/css">
+        .container { width: 600px; }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Search form</h2>
+      <form role="form" action="target.php" method="post" name="searchform">
+        <div class="form-group">
+          <label for="keyword">Search keyword:</label>
+          <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Enter keyword">
+          <span id="keyword-counter"></span>
+        </div>
+        <button type="submit" onclick="return validateSearch()" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/bootstrap.min.js"></script>
+    <script src="js/script-search.js"></script>
+  </body>
+</html>
+
