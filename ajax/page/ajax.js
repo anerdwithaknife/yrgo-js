@@ -15,7 +15,7 @@ function loadContent() {
         }
     }
 
-    xmlhttp.open('GET', '/yrgo/ajax/page/content.php', true);
+    xmlhttp.open('GET', 'content.php', true);
     xmlhttp.send();
 
     content.innerHTML = 'Laddar..';
